@@ -75,6 +75,13 @@ class MemberRepositoryTest {
         assertThat(memberRepository.findById(2L).isEmpty()).isTrue();
     }
 
+    /**
+     * Updates the name of a member with the given ID.
+     *
+     * This test method demonstrates updating the name of a member in the repository.
+     * It first retrieves the member with ID 2, changes the name to "BC", and then
+     * verifies that the updated name is correctly stored in the repository.
+     */
     @Sql("/insert-member.sql")
     @Test
     void updateMember() {
