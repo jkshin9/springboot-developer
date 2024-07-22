@@ -1,0 +1,3 @@
+INSERT INTO member(ID, NAME) VALUES (1, 'A')
+INSERT INTO member(ID, NAME) VALUES (2, 'B')
+INSERT INTO member(ID, NAME) VALUES (3, 'C')
