@@ -3,8 +3,10 @@ package me.shinsunyoung.springbootdeveloper.controller;
 import lombok.RequiredArgsConstructor;
 
 import me.shinsunyoung.springbootdeveloper.dto.ArticleResponse;
+import me.shinsunyoung.springbootdeveloper.dto.ArticleViewResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import me.shinsunyoung.springbootdeveloper.service.BlogService;
@@ -60,4 +62,6 @@ public class BlogApiController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new ArticleResponse(updateArticle));
     }
+
+
 }

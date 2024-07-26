@@ -17,14 +17,18 @@
         <div class="col-lg-8">
             <article>
                 <input type="hidden" id="article-id" th:value="${article.id}">
+
                 <header class="mb-4">
-                    <h1 class="fw-bolder mb-1" th:text="${article.title}">Title</h1>
+                    <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요."
+                           th:value="${article.title}">
                 </header>
                 <section>
-                    <p class="fs-5 mb-4"  th:text="${article.content}">Content</p>
+                    <textarea class="form-control h-25" id="content" placeholder="내용을 입력하세요."
+                           th:text="${article.content}"> </textarea>
                 </section>
-                <button id="modify-btn" th:onclick="|location.href='@{/new-article/{id}(id=${article.id})}'|"  type="button" class="btn btn-primary btm-sm">수정</button>
-                <button id="delete-btn" type="button" class="btn btn-secondary btm-sm">삭제</button>
+
+                <button th:if="${article.id} !=null " type="button" id="modify-btn" class="btn btn-primary btm-sm">수정</button>
+                <button th:if="${article.id} ==null " type="button" id="create-btn" class="btn btn-primary btm-sm">등록</button>
             </article>
         </div>
     </div>
