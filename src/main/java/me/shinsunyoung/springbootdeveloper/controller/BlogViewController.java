@@ -50,4 +50,11 @@ public class BlogViewController {
 
         return "newArticle";
     }
+
+    @GetMapping("/new-article")
+    public String newArticle(Model model) {
+
+        model.addAttribute("article", new ArticleViewResponse());
+        return "newArticle";
+    }
 }
