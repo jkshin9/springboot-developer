@@ -16,4 +16,8 @@ spring:
     console:
       enabled: true
 
+jwt:
+  issuer: jkshin9@plateer.com
+  secret_key: springboot
+
 
