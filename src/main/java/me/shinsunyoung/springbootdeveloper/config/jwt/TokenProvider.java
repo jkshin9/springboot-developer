@@ -18,11 +18,15 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Set;
 
-@RequiredArgsConstructor
+
 @Service
 public class TokenProvider {
 
     private final JwtProperties jwtProperties;
+
+    public TokenProvider(JwtProperties jwtProperties) {
+        this.jwtProperties = jwtProperties;
+    }
 
     public String generateToken(User user, Duration expiredAt) {
         Date now = new Date();

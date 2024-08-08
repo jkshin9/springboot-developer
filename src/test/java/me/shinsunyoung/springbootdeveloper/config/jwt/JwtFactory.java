@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.Duration;
 import java.util.Date;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ public class JwtFactory {
 
     private String subject= "test@email.com";
     private Date issuedAt = new Date();
-    private Date expiration = new Date(issuedAt.getTime() + 1000 * 60 * 60);
+    private Date expiration = new Date(issuedAt.getTime() + Duration.ofDays(14).toMillis());
     private Map<String, Object> claims = emptyMap();
 
     @Builder
