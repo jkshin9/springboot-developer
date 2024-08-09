@@ -19,10 +19,11 @@ public class TokenProviderTest {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private JwtProperties jwtProperties;
+    //@Autowired
+    //private JwtProperties jwtProperties;
 
-    @DisplayName("generate token() : 유저 정보와 만료 기간을 전달해 토큰을 만들 수 있다.")
+
+    @DisplayName("generate token111() : 유저 정보와 만료 기간을 전달해 토큰을 만들 수 있다.")
     @Test
     void getSecretKey() {
         //given
@@ -31,7 +32,7 @@ public class TokenProviderTest {
 
     }
 
-    /*
+
     @DisplayName("generate token() : 유저 정보와 만료 기간을 전달해 토큰을 만들 수 있다.")
     @Test
     void generateToken() {
@@ -46,14 +47,16 @@ public class TokenProviderTest {
 
         //then
         Long userId = Jwts.parser()
-                .setSigningKey(jwtProperties.getSecretKey())
+                .setSigningKey(tokenProvider.getSecretKey())
                 .parseClaimsJws(token)
                 .getBody()
                 .get("id", Long.class);
+    }
 
+    @DisplayName("valid token() : 유효한 토큰인지 확인할 수 있다.")
+    @Test
+    void validToken(){
+        //given
 
     }
-    */
-
-
 }

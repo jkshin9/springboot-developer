@@ -2,6 +2,7 @@ package me.shinsunyoung.springbootdeveloper.config.jwt;
 
 
 import io.jsonwebtoken.Claims;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.shinsunyoung.springbootdeveloper.domain.User;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,13 +21,11 @@ import java.util.Set;
 
 
 @Service
+@Getter
 public class TokenProvider {
 
-    private final JwtProperties jwtProperties;
-
-    public TokenProvider(JwtProperties jwtProperties) {
-        this.jwtProperties = jwtProperties;
-    }
+    private final String issuer = "jkshin9@plateer.com";
+    private final String secretKey = "springboot000jwt000secretKey000springboot000jwt000secretKey000springboot000jwt000secretKey";
 
     public String generateToken(User user, Duration expiredAt) {
         Date now = new Date();
@@ -39,19 +38,19 @@ public class TokenProvider {
         Date now = new Date();
         return Jwts.builder()
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
-                .setIssuer(jwtProperties.getIssuer())
+                .setIssuer(issuer)
                 .setIssuedAt(now)
                 .setExpiration(expiredAt)
                 .setSubject(user.getEmail())
                 .claim("id", user.getId())
-                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
+                .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact()
                 ;
     }
 
     public boolean validToken(String token) {
         try {
-            Jwts.parser().setSigningKey(jwtProperties.getSecretKey()).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return true;
         } catch (Exception e) {
             return false;
@@ -76,6 +75,6 @@ public class TokenProvider {
     }
 
     private Claims getClames(String token) {
-        return Jwts.parser().setSigningKey(jwtProperties.getSecretKey()).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
     }
 }

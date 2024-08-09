@@ -18,6 +18,6 @@ spring:
 
 jwt:
   issuer: jkshin9@plateer.com
-  secret_key: springboot
+  secretKey: springboot_jwt_secretKey
 
 
